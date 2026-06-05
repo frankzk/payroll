@@ -238,7 +238,7 @@ function renderPago(p) {
       : `Base ${fmtMonto(p.monto_base, p.moneda)}`;
 
   const constancia = p.constancia_path
-    ? `<a class="link" href="/uploads/${esc(p.constancia_path)}" target="_blank">📎 Ver constancia</a>`
+    ? `<a class="link" href="/api/pagos/${p.id}/constancia" target="_blank" rel="noopener">📎 Ver constancia</a>`
     : '';
 
   let acciones;

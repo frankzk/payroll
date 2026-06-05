@@ -11,29 +11,33 @@ Mini-sistema web para gestionar los pagos de tus planillas: saber **cuánto le t
 - **Seguimiento de pagos**: cada pago está *pendiente* hasta que lo marcas como *pagado* **subiendo la constancia** (PDF o imagen). La constancia queda adjunta y se puede ver cuando quieras.
 - **Resumen** de cuánto falta por pagar y cuánto ya se pagó, separado por moneda.
 
-## Cómo correrlo
+## Desplegar (Vercel + Supabase)
 
-Requiere [Node.js](https://nodejs.org) 18 o superior.
+La app está lista para subirse a **Vercel** usando **Supabase** para los datos
+(Postgres) y las constancias (Storage). Sigue la guía paso a paso en
+**[DEPLOY.md](DEPLOY.md)** (~10 min, sin instalar nada).
+
+## Correrlo localmente
+
+Requiere [Node.js](https://nodejs.org) 18+ y un proyecto de Supabase (para la
+base de datos y el storage).
 
 ```bash
+cp .env.example .env   # completa con tus credenciales de Supabase
 npm install
-npm start
+npm start              # http://localhost:3000
 ```
 
-Luego abre **http://localhost:3000** en el navegador (compu o celular en la misma red).
-
-Para desarrollo con recarga automática:
-
-```bash
-npm run dev
-```
+Para desarrollo con recarga automática: `npm run dev`.
 
 ## Dónde se guardan los datos
 
-- La base de datos (SQLite) vive en `data/payroll.db`.
-- Las constancias subidas se guardan en `uploads/`.
+- **Base de datos:** Postgres de Supabase (las tablas se crean solas en el primer arranque).
+- **Constancias:** Supabase Storage, en un bucket privado. La app genera enlaces
+  temporales firmados para verlas.
 
-Ambas carpetas están en `.gitignore` (no se suben al repositorio). Si quieres conservar tus datos, **respáldalas**.
+Las credenciales van en variables de entorno (ver `.env.example` y `DEPLOY.md`);
+nunca se suben al repositorio.
 
 ## Flujo de uso
 
@@ -44,4 +48,4 @@ Ambas carpetas están en `.gitignore` (no se suben al repositorio). Si quieres c
 ## Notas
 
 - v1 sin login (un solo usuario). Se puede agregar autenticación más adelante.
-- Stack: Node.js + Express + SQLite (`better-sqlite3`) + frontend en HTML/CSS/JS sin frameworks.
+- Stack: Node.js + Express + Postgres (Supabase) + Supabase Storage, hosteado en Vercel. Frontend en HTML/CSS/JS sin frameworks.
