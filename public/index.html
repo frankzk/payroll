@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planillas · Gestión de pagos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>💰 Planillas</h1>
+    <nav class="tabs">
+      <button class="tab active" data-tab="pagos">Pagos</button>
+      <button class="tab" data-tab="trabajadores">Trabajadores</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Resumen -->
+    <section id="resumen" class="resumen"></section>
+
+    <!-- ===================== PAGOS ===================== -->
+    <section id="tab-pagos" class="tab-content">
+      <div class="section-head">
+        <h2>Pagos</h2>
+        <div class="filtros">
+          <label>Filtrar:
+            <select id="filtro-estado">
+              <option value="">Todos</option>
+              <option value="pendiente">Pendientes</option>
+              <option value="pagado">Pagados</option>
+            </select>
+          </label>
+          <button class="btn primary" id="btn-nuevo-pago">+ Nuevo pago</button>
+        </div>
+      </div>
+      <div id="lista-pagos" class="cards"></div>
+    </section>
+
+    <!-- ===================== TRABAJADORES ===================== -->
+    <section id="tab-trabajadores" class="tab-content hidden">
+      <div class="section-head">
+        <h2>Trabajadores</h2>
+        <button class="btn primary" id="btn-nuevo-trabajador">+ Nuevo trabajador</button>
+      </div>
+      <div id="lista-trabajadores" class="cards"></div>
+    </section>
+  </main>
+
+  <!-- ===================== MODALES ===================== -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-title"></h3>
+        <button class="close" id="modal-close">&times;</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

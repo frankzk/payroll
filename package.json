@@ -1,0 +1,16 @@
+{
+  "name": "payroll",
+  "version": "1.0.0",
+  "description": "Mini-sistema para gestionar pagos de planillas: cuánto pagar, a quién, y seguimiento con constancia de pago.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "express": "^4.21.2",
+    "multer": "^2.1.1"
+  }
+}
